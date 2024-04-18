@@ -1,27 +1,29 @@
 <template>
   <section class="app">
     <section
-      class="mb-10 w-auto h-auto md:h-[770px] bg-hero-pattern-black bg-no-repeat bg-cover bg-center  justify-center items-center flex flex-col"
+      class="mb-10 w-auto h-auto md:h-[770px] bg-hero-pattern-black bg-no-repeat bg-cover bg-center justify-center items-center flex flex-col"
     >
-
-      <caroselComp class="hidden" />
-      <mobileCarosel class="self-center mt-2" />
+      <caroselComp class="hidden md:flex" />
+      <mobileCarosel class="self-center mt-2 md:hidden" />
     </section>
-    <section class="my-10 md:px-20 px-4">
+    <section class="px-4 my-10 md:px-20">
       <labelComp title="Who are we" :shouldshow="show" />
       <AboutUsComp />
     </section>
-    <section class="my-10 md:px-20 px-3 w-full">
+    <section class="w-full px-3 my-10 md:px-20">
       <labelComp title="popular this season" SearchValue="season" />
       <div
         v-if="popularload"
-        class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in"
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
       >
         <cardloader v-for="index in 5" :key="index" />
       </div>
-      <div v-else class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-else
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardcompHover
-        class="child"
+          class="child"
           v-for="(anime, index) in season"
           :key="index + anime.id"
           :headingText="anime.title.userPreferred"
@@ -34,12 +36,18 @@
         />
       </div>
     </section>
-    <section class="my-10 md:px-20 px-3 w-full">
+    <section class="w-full px-3 my-10 md:px-20">
       <labelComp title="Upcoming this season" SearchValue="next_season" />
-      <div v-if="seasonload" class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-if="seasonload"
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardloader v-for="index in 5" :key="index" />
       </div>
-      <div v-else class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-else
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardcompHover
           v-for="(anime, index) in nextSeason"
           :key="index + anime.id"
@@ -53,12 +61,18 @@
         />
       </div>
     </section>
-    <section class="my-10 md:px-20 px-3 w-full">
+    <section class="w-full px-3 my-10 md:px-20">
       <labelComp title="all time popular" SearchValue="popular" />
-      <div v-if="nextSeasonload" class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-if="nextSeasonload"
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardloader v-for="index in 5" :key="index" />
       </div>
-      <div v-else class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-else
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardcompHover
           v-for="(anime, index) in popular"
           :key="index + anime.id"
@@ -72,7 +86,7 @@
         />
       </div>
     </section>
-    <section class="my-10 px-20 hidden md:block">
+    <section class="hidden px-20 my-10 md:block">
       <labelComp title="top 100 Anime" />
       <div
         v-if="topload"
@@ -107,14 +121,14 @@
             <div class="w-[700px] flex flex-col items-start gap-1">
               <router-link
                 :to="{ name: 'anime', params: { id: anime.id } }"
-                class="font-semibold capitalize text-sm text-zinc-900 dark:text-zinc-100"
+                class="text-sm font-semibold capitalize text-zinc-900 dark:text-zinc-100"
                 >{{ anime.title.userPreferred }}</router-link
               >
               <ul class="flex flex-row gap-1">
                 <li
                   v-for="(genre, genreIndex) in anime.genres"
                   :key="genreIndex"
-                  class="text-xs font-bold py-1 px-2 rounded-full text-white"
+                  class="px-2 py-1 text-xs font-bold text-white rounded-full"
                   :style="{ backgroundColor: anime.coverImage.color }"
                 >
                   <router-link :to="{ name: 'Animegener', params: { tag: genre } }">{{
@@ -126,11 +140,11 @@
 
             <div class="w-[130px]"></div>
             <div class="w-[130px] text-xs font-bold capitalize flex flex-col p-1">
-              <h1 class="font-bold capitalize text-sm text-zinc-900 dark:text-zinc-100">
+              <h1 class="text-sm font-bold capitalize text-zinc-900 dark:text-zinc-100">
                 {{ anime.format }} {{ anime.format === 'TV' ? 'Show' : '' }}
               </h1>
               <p
-                class="text-xs text-zinc-500 dark:text-zinc-600 font-medium font-raleway capitalize"
+                class="text-xs font-medium capitalize text-zinc-500 dark:text-zinc-600 font-raleway"
               >
                 {{
                   anime.format !== 'TV'
@@ -140,11 +154,11 @@
               </p>
             </div>
             <div class="w-[130px] text-xs font-bold capitalize flex flex-col p-1">
-              <h1 class="font-bold capitalize text-sm text-zinc-900 dark:text-zinc-100">
+              <h1 class="text-sm font-bold capitalize text-zinc-900 dark:text-zinc-100">
                 {{ anime.season }} {{ anime.seasonYear }}
               </h1>
               <p
-                class="text-xs text-zinc-500 dark:text-zinc-600 font-medium font-raleway capitalize"
+                class="text-xs font-medium capitalize text-zinc-500 dark:text-zinc-600 font-raleway"
               >
                 {{ anime.status }}
               </p>
@@ -153,12 +167,18 @@
         </div>
       </div>
     </section>
-    <section class="my-10 md:px-20 px-3 w-full md:hidden">
+    <section class="w-full px-3 my-10 md:px-20 md:hidden">
       <labelComp title="top 100 Anime" />
-      <div v-if="nextSeasonload" class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-if="nextSeasonload"
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardloader v-for="index in 10" :key="index" />
       </div>
-      <div v-else class="px-2 md:px-0 justify-center items-center grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2 opacity-0 animate-fade-in">
+      <div
+        v-else
+        class="grid items-center justify-center grid-cols-2 gap-2 px-2 opacity-0 md:px-0 md:grid-cols-5 md:gap-2 animate-fade-in"
+      >
         <cardcompHover
           v-for="(anime, index) in top"
           :key="index + anime.id"
