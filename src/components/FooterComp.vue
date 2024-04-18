@@ -1,8 +1,8 @@
 <template>
   <footer
-    class="bg-zinc-900 text-white font-raleway mt-8 opacity-0 animate-fade-in transition-all duration-200 ease-linear"
+    class="mt-8 text-white transition-all duration-200 ease-linear opacity-0 bg-zinc-900 font-raleway animate-fade-in"
   >
-    <section class="app flex py-8 justify-between px-4">
+    <section class="flex justify-between px-4 py-8 app">
       <div class="flex flex-col items-start justify-center gap-10">
         <svg xmlns="http://www.w3.org/2000/svg" width="97" height="84" viewBox="0 0 512 512">
           <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -11,7 +11,7 @@
             d="M0 80c0 26.5 21.5 48 48 48H64v64h64V128h96v64h64V128h96v64h64V128h16c26.5 0 48-21.5 48-48V13.4C512 6 506 0 498.6 0c-1.7 0-3.4 .3-5 1l-49 19.6C425.7 28.1 405.5 32 385.2 32H126.8c-20.4 0-40.5-3.9-59.4-11.4L18.4 1c-1.6-.6-3.3-1-5-1C6 0 0 6 0 13.4V80zM64 288V480c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384V480c0 17.7 14.3 32 32 32s32-14.3 32-32V288h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H64z"
           />
         </svg>
-        <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex flex-col gap-12 md:flex-row">
           <p class="md:w-[40rem] w-full text-pretty text-base">
             Gates" is your go-to destination for all things manga and anime. Dive into a world where
             Otaku conventions and anime culture converge, offering a plethora of information and
@@ -32,11 +32,11 @@
           </p>
         </div>
         <span class="h-[0.1rem] w-full bg-white"></span>
-        <div class="flex items-center justify-between w-full">
+        <div class="flex flex-col items-center justify-between w-full">
         
-          <h1 class="text-pretty">@copyright 2022 Gates</h1>
-          <h1 class="text-xs">special thanks to anilist for the api</h1>
-          <h1 class="text-pretty">the app is currntly built f0r desktop/laptop views mobile view is being worked on</h1>
+          <h1 class="text-xs text-pretty">@copyright 2022 Gates</h1>
+          <h1 class="text-xs text-pretty">special thanks to anilist for the api</h1>
+          <h1 class="text-xs text-pretty">the app is currently built for desktop/laptop views mobile view is being worked on</h1>
         </div>
       </div>
     </section>
