@@ -3,23 +3,27 @@
     <viewloaderComp v-if="loaders" />
     <div v-else class="opacity-0 animate-fade-in mb-5">
       <div
-        class="w-dvw h-[400px] bg-gradient-to-tl from-cyan-50 via-current to-neutral-900 opacity-0 animate-fade-in"
+        class="w-dvw h-[200px] md:h-[400px] bg-gradient-to-tl from-cyan-50 via-current to-neutral-900 opacity-0 animate-fade-in"
       >
-        <img :src="animeinfo.bannerImage" :alt="preferedName" class="w-dvw h-[400px]" />
+        <img
+          :src="animeinfo.bannerImage"
+          :alt="preferedName"
+          class="w-dvw h-[200px] md:h-[400px] object-fill"
+        />
       </div>
-      <div class="h-fit min-h-[300px] app relative flex gap-8 justify-center">
+      <div class="h-fit min-h-[180px] md:min-h-[300px] app relative flex gap-8 justify-center">
         <img
           :src="dispImg"
           :alt="preferedName"
-          class="w-[250px] h-[350px] absolute top-[-40%] left-0"
+          class="w-[120px] h-[190px] md:w-[250px] md:h-[350px] absolute md:top-[-70%] top-[-30%] left-[5%] md:left-[2%]"
         />
-        <div class="w-[900px] mt-6 ml-[80px]">
+        <div class="md:w-[900px] md:mt-6 md:ml-[140px] mt-[6rem] w-dvw px-5">
           <div class="">
-            <h1 class="font-semibold text-3xl font-raleway dark:text-zinc-50">
+            <h1 class="font-semibold text-xl md:text-3xl font-raleway dark:text-zinc-50">
               {{ preferedName }}
             </h1>
             <p
-              class="my-4 text-lg leading-6 font-normal font-raleway dark:text-zinc-50"
+              class="my-4 text-sm md:text-lg leading-4 md:leading-6 font-normal font-raleway dark:text-zinc-50"
               v-html="animeinfo.description"
             ></p>
           </div>
@@ -27,23 +31,23 @@
       </div>
     </div>
     <span
-      class="mb-10 mx-auto justify-center flex h-[0.1rem] w-[1440px] bg-zinc-800 dark:bg-zinc-50"
+      class="md:mb-10 mb-6 mx-auto justify-center flex h-[0.1rem] md:w-[1440px] w-dvw bg-zinc-800 dark:bg-zinc-50 px-3"
     ></span>
-    <section class="app flex gap-6">
-      <div class="flex flex-col">
+    <section class="app flex md:flex-row flex-col gap-6">
+      <div class="flex flex-col mx-auto md:mx-0">
         <contentsideloader v-if="loaders" class="opacity-0 animate-fade-in" />
-        <div v-else class="w-[208px] flex flex-col gap-3 animate-fade-in">
+        <div v-else class="w-[360px] md:w-[208px] flex flex-col gap-3 animate-fade-in">
           <section
-            class="bg-zinc-200 w-[208px] min-h-[400px] p-4 flex flex-col gap-3 font-raleway dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
+            class="bg-zinc-200 w-[360px] md:w-[208px] min-h-max md:min-h-[400px] md:p-4 p-3 flex flex-row md:flex-col gap-3 font-raleway dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 overflow-scroll md:overflow-hidden"
           >
             <div
               v-if="
                 animeinfo.nextAiringEpisode !== null && animeinfo.nextAiringEpisode.length !== 0
               "
-              class="text-zinc-700 dark:text-zinc-300"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
             >
               <h1 class="text-base font-semibold capitalize">Aired</h1>
-              <p class="text-sm font-normal capitalize">
+              <p class="text-sm font-normal capitalize text-blue-700 inline md:block">
                 Ep
                 <span class="font-semibold">{{ animeinfo.nextAiringEpisode.episode }} :</span>&nbsp;
                 <span class="font-semibold">{{ days }} </span>&nbsp;
@@ -51,62 +55,135 @@
                 <span class="font-semibold">{{ minutes }} </span>&nbsp;
               </p>
             </div>
-            <div v-if="animeinfo.format !== null && animeinfo.format !== null">
+            <div
+              v-if="animeinfo.format !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Format</h1>
-              <p class="text-sm font-normal capitalize">
+              <p class="text-sm font-normal capitalize inline md:block">
                 {{ animeinfo.format }} {{ animeinfo.format === 'TV' ? 'Show' : '' }}
               </p>
             </div>
-            <div v-if="animeinfo.chapters !== null">
-              <h1 class="text-base font-semibold capitalize">chapters</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.chapters }}</p>
+            <div
+              v-if="animeinfo.episodes !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
+              <h1 class="text-base font-semibold capitalize">Episodes</h1>
+              <p class="text-sm font-normal capitalize inline md:block">{{ animeinfo.episodes }}</p>
             </div>
-            <div v-if="animeinfo.volumes !== null">
-              <h1 class="text-base font-semibold capitalize">volumes</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.volumes }}</p>
+            <div
+              v-if="animeinfo.duration !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
+              <h1 class="text-base font-semibold capitalize">episode Duration</h1>
+              <p class="text-sm font-normal capitalize inline md:block">
+                {{ animeinfo.duration }} mins
+              </p>
             </div>
-            <div v-if="animeinfo.status !== null">
+            <div
+              v-if="animeinfo.status !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Status</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.status }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">{{ animeinfo.status }}</p>
             </div>
-            <div v-if="animeinfo.startDate !== null && animeinfo.startDate.length !== 0">
+            <div
+              v-if="animeinfo.startDate !== null && animeinfo.startDate.length !== 0"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Start date</h1>
-              <p class="text-sm font-normal capitalize">
+              <p class="text-sm font-normal capitalize inline md:block">
                 {{ formattedStartMonth }},{{ animeinfo.startDate.day }},{{
                   animeinfo.startDate.year
                 }}
               </p>
             </div>
-            <div v-if="animeinfo.endDate !== null && animeinfo.endDate.length !== 0">
+            <div
+              v-if="animeinfo.endDate !== null && animeinfo.endDate.length !== 0"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Release Date</h1>
-              <p class="text-sm font-normal capitalize">
+              <p class="text-sm font-normal capitalize inline md:block">
                 {{ formattedEndMonth }} {{ animeinfo.endDate.day }} {{ animeinfo.endDate.year }}
               </p>
             </div>
+            <div
+              v-if="animeinfo.season !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
+              <h1 class="text-base font-semibold capitalize">Season</h1>
+              <p class="text-sm font-normal capitalize inline md:block">{{ animeinfo.season }}</p>
+            </div>
+            <div
+              v-if="animeinfo.studios !== null && animeinfo.studios.length !== 0"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
+              <h1 class="text-base font-semibold capitalize">Studios</h1>
+              <p class="text-sm font-normal capitalize inline md:block">
+                {{ firstStudio }}
+              </p>
+            </div>
+            <div
+              v-if="animeinfo.studios !== null && animeinfo.studios.length !== 0"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
+              <h1 class="text-base font-semibold capitalize">Producers</h1>
 
-            <div v-if="animeinfo.source !== null">
+              <p
+                class="text-sm font-normal capitalize inline md:block"
+                v-for="(studio, index) in studioNames.slice(1)"
+                :key="index"
+              >
+                {{ studio }} ,
+              </p>
+            </div>
+            <div
+              v-if="animeinfo.source !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Source</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.source }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">{{ animeinfo.source }}</p>
             </div>
-            <div v-if="animeinfo.hashtag !== null">
+            <div
+              v-if="animeinfo.hashtag !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Hashtag</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.hashtag }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">{{ animeinfo.hashtag }}</p>
             </div>
-            <div v-if="animeinfo.title.romaji !== null">
+            <div
+              v-if="animeinfo.title.romaji !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Romaji</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.title.romaji }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">
+                {{ animeinfo.title.romaji }}
+              </p>
             </div>
-            <div v-if="animeinfo.title.english !== null">
+            <div
+              v-if="animeinfo.title.english !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">English</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.title.english }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">
+                {{ animeinfo.title.english }}
+              </p>
             </div>
-            <div v-if="animeinfo.title.native !== null">
+            <div
+              v-if="animeinfo.title.native !== null"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Native</h1>
-              <p class="text-sm font-normal capitalize">{{ animeinfo.title.native }}</p>
+              <p class="text-sm font-normal capitalize inline md:block">
+                {{ animeinfo.title.native }}
+              </p>
             </div>
-            <div v-if="animeinfo.synonyms !== null && animeinfo.synonyms.length !== 0">
+            <div
+              v-if="animeinfo.synonyms !== null && animeinfo.synonyms.length !== 0"
+              class="text-zinc-700 dark:text-zinc-300 min-w-max"
+            >
               <h1 class="text-base font-semibold capitalize">Synonyms</h1>
-              <p class="text-sm font-normal capitalize">
+              <p class="text-sm font-normal capitalize inline md:block">
                 <span v-for="(synonym, index) in animeinfo.synonyms" :key="index">
                   {{ synonym }}
                   <br v-if="index !== animeinfo.synonyms.length - 1" />
@@ -114,7 +191,7 @@
               </p>
             </div>
           </section>
-          <div class="">
+          <div class="w-[360px] md:w-[208px]">
             <h1 class="text-base font-semibold capitalize">geners</h1>
 
             <ul class="flex flex-wrap gap-1">
@@ -124,7 +201,7 @@
                 :style="{ backgroundColor: getGenreColor(genre) }"
                 class="text-sm font-bold py-1 px-3 rounded-full text-white w-fit bg-zinc-200 hover:bg-zinc-400 transition-all duration-200 ease-linear"
               >
-                <router-link :to="{ name: 'Mangagener', query: { genre: genre } }">
+                <router-link :to="{ name: 'Animegener', query: { genre: genre } }">
                   {{ genre }}
                 </router-link>
               </li>
@@ -133,12 +210,12 @@
           <div class="">
             <h1 class="text-base font-semibold capitalize">Tags</h1>
 
-            <ul class="flex flex-col gap-2 w-[208px]">
+            <ul class="flex flex-wrap md:flex-col gap-2 w-[360px] md:w-[208px]">
               <li
                 v-for="(tags, tagIndex) in animeinfo.tags"
                 :key="tagIndex"
                 @click="navigateToTagspager(tags.name)"
-                class="w-[208px] cursor-pointer py-1 px-2 text-zinc-900 bg-zinc-200 dark:text-zinc-100 hover:bg-zinc-400 dark:bg-zinc-800 dark:hover:bg-zinc-900 transition-all duration-200 ease-linear rounded-sm capitalize font-semibold"
+                class="py-1 px-2 w-fit md:w-[208px] cursor-pointer text-zinc-900 bg-zinc-200 dark:text-zinc-100 hover:bg-zinc-400 dark:bg-zinc-800 dark:hover:bg-zinc-900 transition-all duration-200 ease-linear rounded-sm capitalize font-semibold"
               >
                 {{ tags.name }}
               </li>
@@ -148,8 +225,8 @@
       </div>
 
       <section class=" ">
-        <section class="mb-10 px-20">
-          <labelComp title="Relations" :shouldshow="show" class="min-w-[1000px]" />
+        <section class="md:mb-10 md:px-20 mx-auto w-[360px] md:w-fit">
+          <labelComp title="Relations" :shouldshow="show" class="md:min-w-[1000px] w-[360px]" />
           <div v-if="loaders" class="flex gap-3 flex-wrap">
             <relationsloader v-for="index in 2" :key="index" />
           </div>
@@ -170,8 +247,8 @@
             </router-link>
           </div>
         </section>
-        <section class="mb-10 px-20">
-          <labelComp title="characters" :shouldshow="show" class="min-w-[1000px]" />
+        <section class="md:mb-10 md:px-20 mx-auto w-[360px] md:w-fit">
+          <labelComp title="characters" :shouldshow="show" class="md:min-w-[1000px] w-[360px]" />
           <div v-if="loaders" class="flex gap-3 flex-wrap opacity-0 animate-fade-in">
             <relationsloader v-for="index in 2" :key="index" />
           </div>
@@ -186,12 +263,12 @@
             />
           </div>
         </section>
-        <section class="mb-10 px-20">
-          <labelComp title="Staff" :shouldshow="show" class="min-w-[1000px]" />
+        <section class="md:mb-10 md:px-20 mx-auto w-[360px] md:w-fit">
+          <labelComp title="Staff" :shouldshow="show" class="md:min-w-[1000px] w-[360px]" />
           <div v-if="loaders" class="flex gap-3 flex-wrap opacity-0 animate-fade-in">
             <relationsloader v-for="index in 2" :key="index" />
           </div>
-          <div v-else class="animate-fade-in flex gap-3 flex-wrap opacity-0 animate-fade-in">
+          <div v-else class="animate-fade-in flex gap-3 flex-wrap opacity-0">
             <charactercard
               v-for="(staff, index) in staffInfo.edges"
               :key="index"
@@ -202,17 +279,17 @@
             />
           </div>
         </section>
-        <section class="my-10 px-20">
-          <labelComp title="recommended" :shouldshow="show" class="min-w-[1000px]" />
+        <section class="md:mb-10 md:px-20 mx-auto w-[360px] md:w-fit">
+          <labelComp title="recommended" :shouldshow="show" class="md:min-w-[1000px] w-[360px]" />
           <div
             v-if="loaders"
-            class="flex justify-start items-center gap-2 opacity-0 animate-fade-in"
+            class="flex justify-start items-center gap-2 flex-wrap opacity-0 animate-fade-in mx-auto md:mx-0 w-[300px] md:w-fit"
           >
             <contentloader v-for="index in 5" :key="index" />
           </div>
           <div
             v-else
-            class="flex justify-start items-center gap-5 flex-wrap animate-fade-in opacity-0"
+            class="flex justify-start items-center gap-5 flex-wrap animate-fade-in opacity-0 mx-auto md:mx-0 w-[300px] md:w-fit"
           >
             <router-link
               v-for="(anime, index) in reccomendation"

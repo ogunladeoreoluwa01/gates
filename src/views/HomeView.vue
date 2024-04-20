@@ -1,7 +1,7 @@
 <template>
   <section class="app">
     <section
-      class="mb-10 w-auto h-auto md:h-[770px] bg-hero-pattern-black bg-no-repeat bg-cover bg-center justify-center items-center flex flex-col"
+      class="md:p-8 mb-10 w-auto h-auto md:h-[770px] bg-hero-pattern-black bg-no-repeat bg-cover bg-center justify-center items-center flex flex-col"
     >
       <caroselComp class="hidden md:flex" />
       <mobileCarosel class="self-center mt-2 md:hidden" />
