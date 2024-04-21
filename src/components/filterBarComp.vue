@@ -1,6 +1,6 @@
 <template>
-  <section class="w-dmv flex md:hidden flex-col justify-center items-center  mx-auto">
-    <div class="flex flex-col gap-2 justify-center items-center ">
+  <section class="w-dmv flex md:hidden flex-col justify-center items-center mx-auto">
+    <div class="flex flex-col gap-2 justify-center items-center">
       <div>
         <div class="relative flex items-end gap-5">
           <input
@@ -366,7 +366,7 @@
                   />
                 </svg>
               </button>
-      
+
               <transition
                 enter-active-class="transform transition duration-500 ease-custom"
                 enter-class="-translate-y-1/2 scale-y-0 opacity-0"
@@ -869,7 +869,7 @@ export default {
       this.updateSearchQueryValues()
       // Update the route only when the search button is clicked
       this.$router.push(this.generateRoute)
-  },
+    },
     updateSearchQueryValues() {
       this.genreCheck()
       this.tagsCheck()

@@ -207,7 +207,7 @@
               </transition>
             </div>
           </div>
-          <div class="flex items-center justify-center font-raleway font-medium z-40 ">
+          <div class="flex items-center justify-center font-raleway font-medium z-40">
             <div class="relative text-lg w-40">
               <button
                 class="flex items-center justify-between px-1 py-1 w-full border-b rounded-sm transition-all duration-200 ease-in-out"
