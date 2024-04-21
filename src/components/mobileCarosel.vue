@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center w-full ml-10 mr-10 group text-center scale-90">
+    <div class="flex items-center justify-center w-full ml-10 mr-10 group text-center scale-90" v-touch:swipe.left="decrementIndex" v-touch:swipe.right="incrementIndex">
       <div class="flex  w-fit  flex-col gap-3 items-center justify-center" v-if="trending.length > 0">
 
         <div
@@ -209,6 +209,12 @@
         clearInterval(this.timer)
         this.startTimer() // Restart the timer
       }
+    },
+    incrementIndex() {
+      this.currentIndex = (this.currentIndex + 1) % this.trending.length
+    },
+    decrementIndex() {
+      this.currentIndex = this.currentIndex === 0 ? this.trending.length - 1 : this.currentIndex - 1
     },
   
     mounted() {

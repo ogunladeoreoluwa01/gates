@@ -211,7 +211,13 @@ export default {
     startTimer() {
       this.timer = setInterval(() => {
         this.currentIndex = (this.currentIndex + 1) % this.trending.length
-      }, 5000) // Change index every 2 seconds (adjust as needed)
+      }, 5000)
+    },
+    incrementIndex() {
+      this.currentIndex = (this.currentIndex + 1) % this.trending.length
+    },
+    decrementIndex() {
+      this.currentIndex = this.currentIndex === 0 ? this.trending.length - 1 : this.currentIndex - 1
     },
     changeIndex(index) {
       this.currentIndex = index

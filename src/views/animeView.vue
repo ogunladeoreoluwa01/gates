@@ -185,7 +185,7 @@
               <h1 class="text-base font-semibold capitalize">Synonyms</h1>
               <p class="text-sm font-normal capitalize inline md:block">
                 <span v-for="(synonym, index) in animeinfo.synonyms" :key="index">
-                  {{ synonym }}
+                  {{ synonym }} ,
                   <br v-if="index !== animeinfo.synonyms.length - 1" />
                 </span>
               </p>
