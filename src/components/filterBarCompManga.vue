@@ -1,7 +1,7 @@
 <template>
-  <section class="w-dmv flex md:hidden flex-col justify-center items-center mx-auto">
-    <div class="flex flex-col gap-2 justify-center items-center">
-      <div>
+  <section class="app w-[350px] flex md:hidden flex-col justify-center items-center mx-auto">
+    <div class="flex flex-col gap-2 justify-center items-center w-[350px]">
+      <div  class="w-[350px]">
         <div class="relative flex items-end gap-5">
           <input
             id="Search"
@@ -395,7 +395,7 @@
       </div>
     </div>
   </section>
-  <section class="app md:flex mb-10 flex-col gap-3 hidden">
+  <section class="app md:flex mb-10 flex-col gap-3 hidden ">
     <section class="flex items-center w-full justify-between">
       <div class="flex">
         <div class="relative flex items-end gap-5">
@@ -412,26 +412,11 @@
             class="absolute text-zinc-700 dark:text-zinc-200 font-raleway font-medium left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-zinc-950 dark:peer-focus:text-zinc-50 duration-200 ease-in-out"
             >Search:</label
           >
-          <svg
-            @click="handleSearchButtonClick"
-            class="w-4 h-4 text-zinc-950 dark:text-zinc-50 cursor-pointer hover:scale-105 duration-200 ease-in-out transition-all"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            ></path>
-          </svg>
+         
         </div>
       </div>
       <div class="flex gap-8 items-center">
-        <div class="flex items-center justify-center font-raleway font-medium">
+        <div class="flex items-center justify-center font-raleway font-medium z-50">
           <div class="relative text-lg w-40">
             <button
               class="flex items-center justify-between px-1 py-1 w-full border-b rounded-sm transition-all duration-200 ease-in-out"
@@ -494,7 +479,7 @@
             </transition>
           </div>
         </div>
-        <div class="flex items-center justify-center font-raleway font-medium">
+        <div class="flex items-center justify-center font-raleway font-medium z-50">
           <div class="relative text-lg w-40">
             <button
               class="flex items-center justify-between px-1 py-1 w-full border-b rounded-sm transition-all duration-200 ease-in-out"
@@ -557,7 +542,7 @@
             </transition>
           </div>
         </div>
-        <div class="flex items-center justify-center font-raleway font-medium">
+        <div class="flex items-center justify-center font-raleway font-medium z-40">
           <div class="relative text-lg w-40">
             <button
               class="flex items-center justify-between px-1 py-1 w-full border-b rounded-sm transition-all duration-200 ease-in-out"
@@ -620,7 +605,7 @@
             </transition>
           </div>
         </div>
-        <div class="flex items-center justify-center font-raleway font-medium">
+        <div class="flex items-center justify-center font-raleway font-medium z-40">
           <div class="relative text-lg w-40">
             <button
               class="flex items-center justify-between px-1 py-1 w-full border-b rounded-sm transition-all duration-200 ease-in-out"

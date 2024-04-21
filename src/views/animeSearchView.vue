@@ -1,14 +1,14 @@
 <template>
-  <section class="app">
+  <section class="app  mx-5 max-w-[1440px] min-w-[360px]">
     <div
-      class=" text-xl md:text-3xl text-zinc-800 font-raleway font-extrabold capitalize dark:text-zinc-50 my-8"
+      class="text-xl md:text-3xl text-zinc-800 font-raleway font-extrabold capitalize dark:text-zinc-50 my-4 md:my-8"
     >
-      <h1>{{ $route.params.search }}</h1>
+      <h1>{{ $route.params.search }} Anime</h1>
     </div>
-    <filterBarComp class="sticky z-30" />
-    <section class="mt-6 flex flex-wrap md:gap-6 gap-2 sm:gap-4 justify-center items-center">
-      <div class="flex flex-wrap md:gap-6 gap-2 sm:gap-4">
-        <div v-if="isLoading" class="flex flex-wrap md:gap-6 gap-2 sm:gap-4">
+    <filterBarComp class="sticky z-40" />
+    <section class="md:mt-6  mt-3  md:gap-6 gap-4 justify-center items-center">
+      <div class="flex flex-wrap md:gap-6 gap-4">
+        <div v-if="isLoading" class="flex flex-wrap md:gap-6 gap-4 justify-center items-center">
           <cardcompHover
             v-for="(anime, index) in animeInfo"
             :key="index + anime.id"
@@ -24,18 +24,20 @@
             @click="navigateToAnime(anime.id)"
           />
 
-          <div class="flex flex-wrap md:gap-6 gap-2 sm:gap-4" v-if="ismore">
+          <div class="flex flex-wrap md:gap-6 gap-4  justify-center items-center" v-if="ismore">
             <cardloader v-for="index in 20" :key="index" class="opacity-0 animate-fade-in" />
           </div>
         </div>
 
-        <div v-else class="flex flex-wrap md:gap-6 gap-2 sm:gap-4">
+        <div v-else class="flex flex-wrap md:gap-6 gap-4 justify-center items-center">
           <cardloader v-for="index in 20" :key="index" class="opacity-0 animate-fade-in" />
         </div>
       </div>
     </section>
 
-    <div class="text-xl text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 mt-8">
+    <div
+      class="md:text-xl text-base text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 md:mt-8"
+    >
       <h1 v-if="hasNextPage">keep scrolling ..</h1>
       <h v-else>
         Kudos, fellow otaku! You've reached the end of our catalog. But fret not, there's more
@@ -50,7 +52,7 @@
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        height="40"    
+        height="40"
         width="32.5"
         viewBox="0 0 320 512"
         class="dark:text-zinc-400 text-zinc-950 group-hover:text-zinc-900 group-hover:rotate-[360deg] dark:group-hover:text-zinc-100 group-active:duration-0 duration-300 transition-all ease-linear"
@@ -81,7 +83,6 @@ export default {
       ismore: false,
       search: this.$route.params.search,
       isThereContent: true,
-
       hasNextPage: null
     }
   },

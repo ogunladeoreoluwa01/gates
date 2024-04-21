@@ -1,5 +1,5 @@
 <template>
-  <div class="relative group w-[250px] cursor-pointer">
+  <div class="relative group max-w-fit cursor-pointer">
     <div
       v-if="checkCondition()"
       class="scale-[75%] sm:scale-[85%] md:scale-[95%] lg:scale-100 rounded-full text-zinc-50 absolute text-base top-[-10px] left-[-10px] w-[2.85rem] h-[2.85rem] justify-center items-center z-10 font-bold font-raleway flex bg-black shadow-zinc-800 shadow-md"
@@ -7,7 +7,7 @@
     >
       #{{ index + 1 }}
     </div>
-    <div class="flex flex-col items-start gap-[0.1rem]">
+    <div class="flex flex-col max-w-fit items-start gap-[0.1rem]">
       <div
         class="w-[150px] h-[220px] sm:w-[184px] sm:h-[264px] md:w-[207px] md:h-[297px]  lg:w-[230px] lg:h-[330px] overflow-hidden rounded-t-md"
         :style="{ backgroundColor: itemBackgroundColor }"

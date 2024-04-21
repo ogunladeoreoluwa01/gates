@@ -1,7 +1,7 @@
 <template>
-  <section class="w-dmv flex md:hidden flex-col justify-center items-center mx-auto">
-    <div class="flex flex-col gap-2 justify-center items-center">
-      <div>
+  <section class="app w-[350px]flex md:hidden flex-col justify-center items-center mx-auto">
+    <div class="flex w-[350px] flex-col gap-2 justify-center items-center">
+      <div class="w-[350px]">
         <div class="relative flex items-end gap-5">
           <input
             id="Search"

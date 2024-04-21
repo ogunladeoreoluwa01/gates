@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="md:w-[1272px] md:h-[382px] flex flex-col md:flex-row">
+    <div class="md:w-[1272px] md:h-[382px] flex flex-col md:flex-row scale-90">
       <img
         src="https://i.pinimg.com/originals/87/1d/11/871d116d0712851927a052b648422434.jpg"
         alt="hi"
@@ -14,10 +14,10 @@
         />
         <div class="absolute top-[25%] left-[10%] md:w-[471.14px]">
           <div>
-            <h1 class="text-base md:text-2xl font-raleway font-bold mb-2 text-zinc-900">
+            <h1 class="text-base md:text-2xl font-raleway font-bold mb-2 text-zinc-950">
               About Us
             </h1>
-            <p class="text-sm md:text-base text-pretty font-medium font-raleway text-zinc-900">
+            <p class="text-sm md:text-base text-pretty font-medium font-raleway text-zinc-950">
               Welcome to "Gates" – your ultimate destination for anime and manga. We're passionate
               enthusiasts celebrating the diverse world of anime and manga. At "Gates," we believe
               in the power of storytelling and creativity to inspire and connect people from all
@@ -37,10 +37,10 @@
         />
         <div class="absolute top-[25%] left-[10%] md:w-[471.14px]">
           <div>
-            <h1 class="text-base md:text-2xl font-raleway font-bold mb-2 text-zinc-900">
+            <h1 class="text-base md:text-2xl font-raleway font-bold mb-2 text-zinc-950">
               What We Do
             </h1>
-            <p class="text-sm md:text-base text-pretty font-medium font-raleway text-zinc-900">
+            <p class="text-sm md:text-base text-pretty font-medium font-raleway text-zinc-950">
               At "Gates," powered by the AniList API, we provide a comprehensive collection of anime
               and manga content. Dive into exclusive interviews, behind-the-scenes insights, and
               stay updated on the latest news and trends. Discover curated tops and hidden gems,

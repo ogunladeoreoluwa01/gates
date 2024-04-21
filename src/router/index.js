@@ -44,6 +44,11 @@ const router = createRouter({
       path: '/manga/tagSearch', // Define your route with parameter
       name: 'Mangagener',
       component: () => import('../views/mangaGenerView.vue')
+    },
+    {
+      path: '/:catchAll(.*)', // This should be the last route in your routes array
+      name: 'NotFound',
+      component: () => import('../views/NotFound.vue')
     }
     // { path: '*', component: () => import('../views/notfoundView.vue') }
   ]

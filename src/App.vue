@@ -11,6 +11,6 @@ export default {
   <header class="bg-white fixed md:w-full z-50 md:px-10 ">
     <navBarComp />
   </header>
-  <RouterView class="md:pt-[2rem] md:scale-95 pt-6" />
+  <RouterView class="md:pt-[2rem]  pt-6" />
   <FooterComp/>
 </template>
