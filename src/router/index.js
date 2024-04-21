@@ -48,7 +48,7 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)', // This should be the last route in your routes array
       name: 'NotFound',
-      component: () => import('../views/NotFound.vue')
+      component: () => import('../views/notfoundView.vue')
     }
     // { path: '*', component: () => import('../views/notfoundView.vue') }
   ]
