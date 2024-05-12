@@ -8,7 +8,7 @@
     </section>
     <section class="px-4 my-10 md:px-20">
       <labelComp title="Who are we" :shouldshow="show" />
-      <AboutUsComp class="flex justify-center items-center" />
+      <AboutUsComp class="mx-auto" />
     </section>
     <section class="w-full px-3 my-10 md:px-20">
       <labelComp title="popular this season" SearchValue="season" />

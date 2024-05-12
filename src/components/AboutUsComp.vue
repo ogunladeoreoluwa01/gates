@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="md:w-[1272px] md:h-[382px] flex flex-col md:flex-row scale-90">
+  <div class="scale-90">
+    <div class="md:w-[1272px] md:h-[382px] flex flex-col md:flex-row ">
       <img
         src="https://i.pinimg.com/originals/87/1d/11/871d116d0712851927a052b648422434.jpg"
         alt="hi"
