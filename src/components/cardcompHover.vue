@@ -15,7 +15,7 @@
         <img
           :src="imageSrc"
           :alt="altText"
-          class="w-[150px] h-[220px] sm:w-[184px] sm:h-[264px] md:w-[207px] md:h-[297px]  lg:w-[230px] lg:h-[330px] hover:grayscale-0 hover:scale-110 grayscale-[45%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"
+          class="w-[150px] h-[220px] sm:w-[184px] sm:h-[264px] md:w-[207px] md:h-[297px]  lg:w-[230px] lg:h-[330px] md:hover:grayscale-0 hover:scale-110 md:grayscale-[45%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"
         />
       </div>
       <span
