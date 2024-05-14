@@ -1,5 +1,5 @@
 <template>
-  <div class="relative group max-w-fit cursor-pointer">
+  <div class="relative cursor-pointer group max-w-fit">
     <div
       v-if="checkCondition()"
       class="scale-[75%] sm:scale-[85%] md:scale-[95%] lg:scale-100 rounded-full text-zinc-50 absolute text-base top-[-10px] left-[-10px] w-[2.85rem] h-[2.85rem] justify-center items-center z-10 font-bold font-raleway flex bg-black shadow-zinc-800 shadow-md"
@@ -15,7 +15,7 @@
         <img
           :src="imageSrc"
           :alt="altText"
-          class="w-[150px] h-[220px] sm:w-[184px] sm:h-[264px] md:w-[207px] md:h-[297px]  lg:w-[230px] lg:h-[330px] md:hover:grayscale-0 hover:scale-110 md:grayscale-[45%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"
+          class="w-[150px] h-[220px] sm:w-[184px] sm:h-[264px] md:w-[207px] md:h-[297px]  lg:w-[230px] lg:h-[330px] md:hover:grayscale-0 hover:scale-110 md:grayscale-[25%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"
         />
       </div>
       <span
@@ -27,22 +27,22 @@
     <div
       class="scale-90 w-[300px] min-h-[200px] absolute rounded-md flex-col z-40 gap-2 shadow-lg bg-white dark:text-zinc-50 dark:bg-zinc-800 p-4 md:group-hover:flex hidden top-[35%] -translate-y-[-40%] -right-[0.5rem] translate-x-[15%] transition-all duration-300 ease-linear animate-fade-in"
     >
-      <h1 class="font-semibold capitalize text-base" :style="{ color: itemBackgroundColor }">
+      <h1 class="text-base font-semibold capitalize" :style="{ color: itemBackgroundColor }">
         {{ headingText }}
       </h1>
       <h1 class="text-base font-semibold capitalize">
         {{ transformString(status) }}
       </h1>
-      <h1 class="font-semibold capitalize text-base" :style="{ color: itemBackgroundColor }">
+      <h1 class="text-base font-semibold capitalize" :style="{ color: itemBackgroundColor }">
         {{ format }} {{ format === 'TV' ? 'Show' : '' }}
       </h1>
 
       <h1 class="text-base font-semibold capitalize">{{ episodes }} episodes</h1>
-      <ul class="flex flex-row gap-1 flex-wrap">
+      <ul class="flex flex-row flex-wrap gap-1">
         <li
           v-for="(genre, genreIndex) in genres"
           :key="genreIndex"
-          class="text-xs font-bold py-1 px-2 rounded-full text-white bg-black"
+          class="px-2 py-1 text-xs font-bold text-white bg-black rounded-full"
           :style="{ backgroundColor: itemBackgroundColor }"
         >
           {{ genre }}
