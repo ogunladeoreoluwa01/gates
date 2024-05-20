@@ -8,6 +8,9 @@
       :style="{ backgroundColor: itemBackgroundColor }"
     >
       <img
+      loading="lazy"
+      decoding='async'
+      fetchPriority='high'
         :src="imageSrc"
         :alt="altText"
         class="w-[250px] h-[350px] hover:grayscale-0 hover:scale-125 grayscale-[45%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"

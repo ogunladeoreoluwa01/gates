@@ -6,6 +6,9 @@
         class="w-dvw h-[200px] md:h-[400px] bg-gradient-to-tl from-cyan-50 via-current to-neutral-900 opacity-0 animate-fade-in"
       >
         <img
+        loading="lazy"
+        decoding='async'
+        fetchPriority='high'
           :src="animeinfo.bannerImage"
           :alt="preferedName"
           class="w-dvw h-[200px] md:h-[400px] object-fill"
@@ -13,6 +16,9 @@
       </div>
       <div class="h-fit min-h-[180px] md:min-h-[300px] app relative flex gap-8 justify-center">
         <img
+        loading="lazy"
+        decoding='async'
+        fetchPriority='high'
           :src="dispImg"
           :alt="preferedName"
           class="w-[120px] h-[190px] md:w-[250px] md:h-[350px] absolute md:top-[-70%] top-[-30%] left-[5%] md:left-[2%]"

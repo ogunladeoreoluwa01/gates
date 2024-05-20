@@ -111,6 +111,9 @@
           <div class="w-[48px] h-[60px]"></div>
           <router-link :to="{ name: 'anime', params: { id: anime.id } }"
             ><img
+            loading="lazy"
+            decoding='async'
+            fetchPriority='high'
               :src="anime.coverImage.large"
               :alt="anime.title.userPreferred"
               class="w-[48px] h-[60px]"

@@ -2,12 +2,18 @@
   <div class="scale-90">
     <div class="md:w-[1272px] md:h-[382px] flex flex-col md:flex-row ">
       <img
+      loading="lazy"
+      decoding='async'
+      fetchPriority='high'
         src="https://i.pinimg.com/originals/87/1d/11/871d116d0712851927a052b648422434.jpg"
         alt="hi"
         class="md:w-[636px] h-[382px] object-cover grayscale-[45%] hover:grayscale-[10%] transition-all duration-300 ease-linear"
       />
       <div class="md:w-[636px] md:h-[382px] relative bg-zinc-50">
         <img
+        loading="lazy"
+        decoding='async'
+        fetchPriority='high'
           src="https://i.pinimg.com/originals/da/57/94/da579413bf1628ac0488e51dbd8ad5ff.png"
           alt="gate"
           class="md:w-[636px] h-[382px] opacity-30 object-cover"
@@ -31,6 +37,9 @@
     <div class="md:w-[1272px] md:h-[382px] flex flex-col-reverse md:flex-row">
       <div class="md:w-[636px] md:h-[382px] relative bg-zinc-50">
         <img
+        loading="lazy"
+        decoding='async'
+        fetchPriority='high'
           src="https://i.pinimg.com/originals/da/57/94/da579413bf1628ac0488e51dbd8ad5ff.png"
           alt="gate"
           class="w-[636px] h-[382px] opacity-30 object-cover"
@@ -52,6 +61,9 @@
         </div>
       </div>
       <img
+      loading="lazy"
+      decoding='async'
+      fetchPriority='high'
         src="https://i.pinimg.com/originals/4f/da/bb/4fdabb515b5d8e179f4af2e76faaa45c.jpg"
         alt="what we do "
         class="w-[636px] h-[382px] object-cover grayscale-[45%] hover:grayscale-[10%] transition-all duration-300 ease-linear"

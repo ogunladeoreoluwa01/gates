@@ -9,6 +9,9 @@
         >
         
           <img
+          loading="lazy"
+          decoding='async'
+          fetchPriority='high'
             :src="trending[currentIndex].coverImage.extraLarge"
             :alt="trending[currentIndex].title.userPreferred"
             class="w-full h-full object-cover object-center scale-105 cursor-pointer"

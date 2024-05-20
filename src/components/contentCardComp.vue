@@ -2,6 +2,9 @@
   <div class="flex flex-col items-start gap-[0.1rem]">
     <div class="w-[130px] h-[180px] overflow-hidden rounded-t-md">
       <img
+      loading="lazy"
+      decoding='async'
+      fetchPriority='high'
         :src="imageSrc"
         :alt="altText"
         class="w-[130px] h-[180px] hover:grayscale-0 hover:scale-125 md:grayscale-[45%] transition-all duration-200 ease-linear object-cover rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]"

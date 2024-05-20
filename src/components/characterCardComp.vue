@@ -1,6 +1,9 @@
 <template>
   <div class="flex h-[115px] font-raleway text-pretty overflow-hidden group">
     <img
+    loading="lazy"
+    decoding='async'
+    fetchPriority='high'
       :src="imageSource"
       :alt=" CharacterName"
       class="w-[85px] h-[115px] group-hover:scale-110 transition-all duration-200 ease-linear"

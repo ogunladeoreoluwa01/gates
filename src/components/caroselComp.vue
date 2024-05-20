@@ -27,6 +27,9 @@
         class="relative w-[700px] h-[785px] flex items-center justify-center slide-in-right"
       >
         <img
+        loading="lazy"
+        decoding='async'
+        fetchPriority='high'
           :src="trending[currentIndex].coverImage.extraLarge"
           :alt="trending[currentIndex].title.userPreferred"
           class="clip w-full h-full object-cover object-center scale-105"
