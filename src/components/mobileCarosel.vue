@@ -174,10 +174,10 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
+            
             // Assign data to respective variables
             this.trending = data.data.trending.media
-            console.log(this.trending)
+          
           })
           .then(() => {
             // Start the timer after data is fetched and assigned

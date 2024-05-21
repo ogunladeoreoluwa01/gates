@@ -6,7 +6,7 @@
       <h1>Mangas</h1>
     </div>
     <filterBarComp class="sticky z-40" />
-    <section class="md:mt-6  mt-3  md:gap-6 gap-4 justify-center items-center">
+    <section class="md:mt-6 mt-3 md:gap-6 gap-4 justify-center items-center">
       <div class="flex flex-wrap md:gap-6 gap-4">
         <div v-if="isLoading" class="flex flex-wrap md:gap-6 gap-4 justify-center items-center">
           <cardcompHover
@@ -24,7 +24,7 @@
             @click="navigateToAnime(anime.id)"
           />
 
-          <div class="flex flex-wrap md:gap-6 gap-4  justify-center items-center" v-if="ismore">
+          <div class="flex flex-wrap md:gap-6 gap-4 justify-center items-center" v-if="ismore">
             <cardloader v-for="index in 20" :key="index" class="opacity-0 animate-fade-in" />
           </div>
         </div>
@@ -36,6 +36,7 @@
     </section>
 
     <div
+      ref="bottomElement"
       class="md:text-xl text-base text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 md:mt-8"
     >
       <h1 v-if="hasNextPage">keep scrolling ..</h1>
@@ -93,7 +94,6 @@ export default {
 
   methods: {
     countrycheck() {
-      console.log('Inside countrycheck function')
       if (this.country === 'JAPAN') {
         this.countrys = 'JP' // Corrected typo here
       } else if (this.country === 'SOUTH KOREA') {
@@ -123,13 +123,8 @@ export default {
       this.$router.push({ name: 'manga', params: { id: animeId } })
     },
     handleScroll() {
-      let bottomOfWindow =
-        document.documentElement.scrollTop + window.innerHeight ===
-        document.documentElement.offsetHeight
-      if (bottomOfWindow && this.hasNextPage === true) {
-        this.loadmore()
-        this.isThereContent = false
-      }
+      this.loadmore()
+      this.isThereContent = false
     },
     loadmore() {
       this.page++
@@ -169,9 +164,7 @@ export default {
         .then((data) => {
           this.animeInfo = [...this.animeInfo, ...data.data.Page.media]
           this.hasNextPage = data.data.Page.pageInfo.hasNextPage
-          console.log(data)
-          console.log(this.country)
-          console.log(this.countrys)
+
           setTimeout(() => {
             this.isLoading = true
           }, 400)
@@ -199,7 +192,21 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll), window.scrollTo(0, 0)
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        const isIntersecting = entries[0]?.isIntersecting ?? false
+        if (isIntersecting) {
+          this.handleScroll()
+        }
+      },
+      { rootMargin: '50px 0px 0px 0px' }
+    )
+
+    const bottomElement = this.$refs.bottomElement
+    if (bottomElement) {
+      intersectionObserver.observe(bottomElement)
+    }
+
     const query = this.$route.query
     this.search = query.search || undefined
     this.tags = query.tag ? (Array.isArray(query.tag) ? query.tag : [query.tag]) : undefined
@@ -215,13 +222,10 @@ export default {
     }, 500)
     setTimeout(() => {
       this.checkSort()
-      console.log(this.sort)
       this.countrycheck()
     }, 20)
   },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
+
   watch: {
     $route() {
       window.scrollTo(0, 0)

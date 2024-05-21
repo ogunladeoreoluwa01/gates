@@ -36,7 +36,8 @@
     </section>
 
     <div
-      class="md:text-xl text-base text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 md:mt-8"
+    ref="bottomElement"
+      class="md:text-xl p-2 text-base text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 md:mt-8"
     >
       <h1 v-if="hasNextPage">keep scrolling ..</h1>
       <h v-else>
@@ -98,13 +99,8 @@ export default {
       this.$router.push({ name: 'anime', params: { id: animeId } })
     },
     handleScroll() {
-      let bottomOfWindow =
-        document.documentElement.scrollTop + window.innerHeight ===
-        document.documentElement.offsetHeight
-      if (bottomOfWindow && this.hasNextPage === true) {
-        this.loadmore()
+      this.loadmore()
         this.isThereContent = false
-      }
     },
     loadmore() {
       this.page++
@@ -291,19 +287,32 @@ export default {
     }
   },
   mounted() {
-    this.RouteCheck(), window.addEventListener('scroll', this.handleScroll), window.scrollTo(0, 0)
+    this.RouteCheck();
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      const isIntersecting = entries[0]?.isIntersecting ?? false;
+      if (isIntersecting) {
+        
+        this.handleScroll();
+      }
+    }, { rootMargin: "50px 0px 0px 0px" });
+
+    const bottomElement = this.$refs.bottomElement;
+    if (bottomElement) {
+   
+      intersectionObserver.observe(bottomElement);
+    }
   },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
+
   watch: {
     $route() {
+     
       window.scrollTo(0, 0) // Force scroll to top of the page
       this.RouteCheck() // Perform router check
       setTimeout(() => {
         this.fetchData() // First API call
         location.reload() // Force reload
       }, 500)
+      
     }
   }
 }

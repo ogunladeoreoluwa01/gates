@@ -836,9 +836,7 @@ export default {
           this.relations = this.animeinfo.relations
           this.reccomendation = this.animeinfo.recommendations.nodes
 
-          console.log(data[0].data.Media.staff)
-          console.log(data[1].data.Media.characters)
-          console.log(data[2].data.Media)
+        
 
           setTimeout(() => {
             this.loaders = false // After 2 seconds, set loader to false

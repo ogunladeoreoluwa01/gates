@@ -1,12 +1,12 @@
 <template>
-  <section class="app ">
+  <section class="app">
     <div
       class="text-3xl text-zinc-800 font-raleway font-extrabold capitalize dark:text-zinc-50 my-8"
     >
       <h1>{{ $route.params.search }} Mangas</h1>
     </div>
-    <filterBarComp class="sticky z-40 " />
-    <section class="md:mt-6  mt-3  md:gap-6 gap-4 justify-center items-center z-10">
+    <filterBarComp class="sticky z-40" />
+    <section class="md:mt-6 mt-3 md:gap-6 gap-4 justify-center items-center z-10">
       <div class="flex flex-wrap md:gap-6 gap-4">
         <div v-if="isLoading" class="flex flex-wrap md:gap-6 gap-4 justify-center items-center">
           <cardcompHover
@@ -24,7 +24,7 @@
             @click="navigateToAnime(anime.id)"
           />
 
-          <div class="flex flex-wrap md:gap-6 gap-4  justify-center items-center" v-if="ismore">
+          <div class="flex flex-wrap md:gap-6 gap-4 justify-center items-center" v-if="ismore">
             <cardloader v-for="index in 20" :key="index" class="opacity-0 animate-fade-in" />
           </div>
         </div>
@@ -36,6 +36,7 @@
     </section>
 
     <div
+      ref="bottomElement"
       class="md:text-xl text-base text-zinc-800 font-raleway font-medium capitalize dark:text-zinc-50 md:mt-8"
     >
       <h1 v-if="hasNextPage">keep scrolling ..</h1>
@@ -98,13 +99,8 @@ export default {
       this.$router.push({ name: 'manga', params: { id: animeId } })
     },
     handleScroll() {
-      let bottomOfWindow =
-        document.documentElement.scrollTop + window.innerHeight ===
-        document.documentElement.offsetHeight
-      if (bottomOfWindow && this.hasNextPage === true) {
-        this.loadmore()
-        this.isThereContent = false
-      }
+      this.loadmore()
+      this.isThereContent = false
     },
     loadmore() {
       this.page++
@@ -293,19 +289,33 @@ export default {
     }
   },
   mounted() {
-    this.RouteCheck(), window.addEventListener('scroll', this.handleScroll), window.scrollTo(0, 0)
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
+    this.RouteCheck()
+
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        const isIntersecting = entries[0]?.isIntersecting ?? false
+        if (isIntersecting) {
+          this.handleScroll()
+        }
+      },
+      { rootMargin: '50px 0px 0px 0px' }
+    )
+
+    const bottomElement = this.$refs.bottomElement
+    if (bottomElement) {
+      intersectionObserver.observe(bottomElement)
+    }
   },
   watch: {
     $route() {
+     
       window.scrollTo(0, 0) // Force scroll to top of the page
       this.RouteCheck() // Perform router check
       setTimeout(() => {
         this.fetchData() // First API call
         location.reload() // Force reload
       }, 500)
+     
     }
   }
 }

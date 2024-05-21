@@ -877,11 +877,7 @@ export default {
       this.searchCheck()
       this.seasonCheck()
       this.$router.push(this.generateRoute)
-      console.log(this.searchQueryValues)
-      console.log(this.genresQueryValues)
-      console.log(this.tagQueryValues)
-      console.log(this.yearQueryValues)
-      console.log(this.seasonQueryValues)
+     
     },
     genreCheck() {
       if (this.genresQuery.length > 0) {

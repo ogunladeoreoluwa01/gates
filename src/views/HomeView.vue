@@ -364,7 +364,7 @@ export default {
           this.nextSeason = data.data.nextSeason.media
           this.popular = data.data.popular.media
           this.top = data.data.top.media
-          console.log(this.trending)
+          
 
           // Set loading flags to false with a delay
           setTimeout(() => {

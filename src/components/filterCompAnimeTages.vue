@@ -877,11 +877,7 @@ export default {
       this.searchCheck()
       this.seasonCheck()
       this.$router.push(this.generateRoute)
-      console.log(this.searchQueryValues)
-      console.log(this.genresQueryValues)
-      console.log(this.tagQueryValues)
-      console.log(this.yearQueryValues)
-      console.log(this.seasonQueryValues)
+     
     },
     genreCheck() {
       if (this.genresQuery.length > 0) {
@@ -1039,7 +1035,7 @@ export default {
     this.genresQuery = Array.isArray(query.genre) ? query.genre : query.genre ? [query.genre] : []
     this.yearQuery = query.year ? parseInt(query.year) : undefined
     this.seasonQuery = query.season || ''
-    console.log(this.genresQuery)
+   
 
     this.fetchTagsData() // Assuming fetchTagsData is a method that fetches tags data
     this.populateYearArray() // Assuming populateYearArray is a method that populates the year array
